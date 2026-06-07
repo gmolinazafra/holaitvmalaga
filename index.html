@@ -10,26 +10,14 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --blue:#2a9fd6;
-  --blue-dark:#1b7fb0;
-  --blue-deeper:#0e5a7e;
-  --navy:#0c2d3f;
-  --white:#ffffff;
-  --off-white:#fafbfc;
-  --gray-50:#f5f7f8;
-  --gray-100:#eaeef0;
-  --gray-200:#d2d9dd;
-  --gray-400:#94a3ab;
-  --gray-600:#556a75;
-  --gray-800:#2a3a42;
-  --accent:#1a7fb0;
-  --green-wa:#25d366;
+  --blue:#2a9fd6;--blue-dark:#1b7fb0;--blue-deeper:#0e5a7e;--navy:#0c2d3f;
+  --white:#ffffff;--gray-50:#f5f7f8;--gray-100:#eaeef0;--gray-200:#d2d9dd;
+  --gray-400:#94a3ab;--gray-600:#556a75;--gray-800:#2a3a42;
 }
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 .container{max-width:960px;margin:0 auto;padding:0 2rem}
 
-/* ── NAV ── */
 .nav{padding:1.25rem 0;border-bottom:1px solid var(--gray-100);background:var(--white);position:sticky;top:0;z-index:100}
 .nav .container{display:flex;align-items:center;justify-content:space-between}
 .logo-block{display:flex;align-items:center;gap:.65rem;text-decoration:none}
@@ -39,7 +27,6 @@ body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--whi
 .nav-link{font-size:.85rem;font-weight:600;color:var(--blue-dark);text-decoration:none;padding:.55rem 1.25rem;border:1.5px solid var(--blue-dark);border-radius:8px;transition:all .2s}
 .nav-link:hover{background:var(--blue-dark);color:var(--white)}
 
-/* ── HERO ── */
 .hero{padding:5rem 0 4rem;text-align:center;background:var(--white)}
 .hero-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-dark);background:rgba(42,159,214,.07);border:1px solid rgba(42,159,214,.15);padding:.35rem 1rem;border-radius:6px;margin-bottom:1.5rem}
 .hero h1{font-family:'Source Serif 4',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:800;line-height:1.15;color:var(--navy);max-width:700px;margin:0 auto 1.25rem}
@@ -49,18 +36,16 @@ body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--whi
 .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.75rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
 .btn-primary{background:var(--navy);color:var(--white)}
 .btn-primary:hover{background:var(--blue-deeper)}
-.btn-wa{background:var(--green-wa);color:var(--white)}
-.btn-wa:hover{background:#20bd5a}
-.btn-wa svg{flex-shrink:0}
+.btn-email{background:var(--blue);color:var(--white)}
+.btn-email:hover{background:var(--blue-dark)}
+.btn-email svg{flex-shrink:0}
 
-/* ── DIFERENCIADOR ── */
 .diff{padding:3.5rem 0;background:var(--gray-50);border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100)}
 .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
 .diff-item .icon{font-size:1.5rem;width:48px;height:48px;border-radius:12px;background:var(--white);border:1px solid var(--gray-100);display:inline-flex;align-items:center;justify-content:center;margin-bottom:.75rem}
 .diff-item h3{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.35rem}
 .diff-item p{font-size:.82rem;color:var(--gray-600);line-height:1.55}
 
-/* ── PROCESO ── */
 .process{padding:4.5rem 0;background:var(--white)}
 .section-label{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue-dark);margin-bottom:.5rem}
 .section-title{font-family:'Source Serif 4',serif;font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--navy);margin-bottom:.5rem}
@@ -73,7 +58,6 @@ body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--whi
 .step h3{font-size:.9rem;font-weight:700;color:var(--navy)}
 .step p{font-size:.82rem;color:var(--gray-600);line-height:1.55;padding-left:calc(30px + .75rem)}
 
-/* ── CLIENTES ── */
 .clients{padding:4rem 0;background:var(--gray-50);border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100)}
 .clients-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
 .client-card{padding:1.5rem;border-radius:12px;background:var(--white);border:1px solid var(--gray-100);display:flex;gap:1rem;align-items:flex-start;transition:border-color .2s}
@@ -82,7 +66,6 @@ body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--whi
 .client-card h3{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:.25rem}
 .client-card p{font-size:.8rem;color:var(--gray-600);line-height:1.5}
 
-/* ── DOCUMENTACIÓN ── */
 .docs{padding:4rem 0;background:var(--white)}
 .docs-box{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:12px;padding:2rem}
 .docs-box h3{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.75rem}
@@ -90,25 +73,17 @@ body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--whi
 .docs-list li{font-size:.82rem;color:var(--gray-600);padding:.4rem 0;padding-left:1.3rem;position:relative}
 .docs-list li::before{content:'✓';position:absolute;left:0;color:var(--blue);font-weight:700}
 
-/* ── CTA ── */
 .cta{padding:4.5rem 0;text-align:center;background:var(--white)}
 .cta h2{font-family:'Source Serif 4',serif;font-size:clamp(1.4rem,3vw,1.8rem);font-weight:700;color:var(--navy);margin-bottom:.5rem}
 .cta>p,.cta .container>p{color:var(--gray-600);margin-bottom:2rem;font-size:.92rem}
-.contact-row{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
-.contact-item{display:flex;align-items:center;gap:.5rem;font-size:.88rem;color:var(--gray-800);font-weight:500}
-.contact-item a{color:var(--blue-dark);text-decoration:none;font-weight:600}
-.contact-item a:hover{text-decoration:underline}
-.contact-item svg{color:var(--gray-400);flex-shrink:0}
 .cta-name{font-size:.82rem;color:var(--gray-400);margin-top:1.5rem;font-weight:500}
 
-/* ── FOOTER ── */
 footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
 .footer-links{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:.75rem}
-.footer-links a{font-size:.75rem;color:var(--gray-400);text-decoration:none;transition:color .2s}
+.footer-links a{font-size:.75rem;color:var(--gray-400);text-decoration:none}
 .footer-links a:hover{color:var(--blue-dark)}
 .footer-copy{font-size:.72rem;color:var(--gray-400)}
 
-/* ── RESPONSIVE ── */
 @media(max-width:700px){
   .diff-grid{grid-template-columns:1fr;gap:1.5rem}
   .steps{grid-template-columns:1fr}
@@ -116,7 +91,6 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
   .hero{padding:3.5rem 0 3rem}
   .hero-actions{flex-direction:column;align-items:center}
   .btn{width:100%;max-width:300px;justify-content:center}
-  .contact-row{flex-direction:column;align-items:center;gap:1rem}
   .footer-links{flex-direction:column;gap:.5rem}
 }
 @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
@@ -134,7 +108,7 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
       <div class="logo-icon">H</div>
       <div class="logo-text">HOLA ITV MÁLAGA<span>Servicios del Automóvil</span></div>
     </a>
-    <a href="https://wa.me/34615371847?text=Hola%2C%20necesito%20gestionar%20ITVs%20para%20mi%20empresa" class="nav-link">Contactar</a>
+    <a href="mailto:mapedrosa@holaitvmalaga.com?subject=Solicitud%20de%20servicio%20ITV" class="nav-link">Contactar</a>
   </div>
 </nav>
 
@@ -144,9 +118,9 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
     <h1>Tu flota con la ITV al día, <em>sin mover un dedo</em></h1>
     <p>Gestionamos las citas, recogemos los vehículos en tus instalaciones, pasamos la inspección y los devolvemos. Adelantamos las tasas y te lo facturamos todo junto.</p>
     <div class="hero-actions">
-      <a href="https://wa.me/34615371847?text=Hola%2C%20necesito%20gestionar%20ITVs%20para%20mi%20empresa" class="btn btn-wa">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp directo
+      <a href="mailto:mapedrosa@holaitvmalaga.com?subject=Solicitud%20de%20servicio%20ITV" class="btn btn-email">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Escríbenos
       </a>
       <a href="#proceso" class="btn btn-primary">Cómo funciona</a>
     </div>
@@ -183,7 +157,7 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
     <div class="steps">
       <div class="step">
         <div class="step-head"><div class="step-num">1</div><h3>Nos contactas</h3></div>
-        <p>Por WhatsApp o email. Indícanos los vehículos que necesitan inspección y los plazos.</p>
+        <p>Por email. Indícanos los vehículos que necesitan inspección y los plazos.</p>
       </div>
       <div class="step">
         <div class="step-head"><div class="step-num">2</div><h3>Gestionamos la cita</h3></div>
@@ -248,16 +222,10 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
   <div class="container">
     <h2>¿Hablamos?</h2>
     <p>Cuéntanos el volumen de vehículos que gestionas y te proponemos un plan a medida.</p>
-    <a href="https://wa.me/34615371847?text=Hola%2C%20necesito%20gestionar%20ITVs%20para%20mi%20empresa" class="btn btn-wa" style="margin-bottom:2rem">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Escríbenos por WhatsApp
+    <a href="mailto:mapedrosa@holaitvmalaga.com?subject=Solicitud%20de%20servicio%20ITV" class="btn btn-email" style="margin-bottom:2rem">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      mapedrosa@holaitvmalaga.com
     </a>
-    <div class="contact-row">
-      <div class="contact-item">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        <a href="mailto:mapedrosa@holaitvmalaga.com">mapedrosa@holaitvmalaga.com</a>
-      </div>
-    </div>
     <p class="cta-name">Mari Ángeles Pedrosa Alarcón · Gestión y Dirección</p>
   </div>
 </section>
