@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Mari Ángeles Pedrosa
+N:Pedrosa;Mari Ángeles;;;
+ORG:Hola ITV Málaga
+TITLE:Servicios del Automóvil
+TEL;TYPE=CELL,VOICE:+34615371847
+EMAIL;TYPE=INTERNET:mapedrosa@holaitvmalaga.com
+URL:https://holaitvmalaga.com
+ADR;TYPE=WORK:;;Málaga;;;España
+NOTE:Tu flota con la ITV al día, sin mover un dedo
+END:VCARD
