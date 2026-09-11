@@ -28,17 +28,22 @@
       min-height: 100%;
       min-height: 100dvh;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       font-family: 'DM Sans', system-ui, sans-serif;
       color: var(--dark);
       -webkit-font-smoothing: antialiased;
-      padding: 12px 16px;
+      padding: 8px 8px 16px;
+      overflow-y: auto;
+    }
+    @supports (height: 100dvh) {
+      body { min-height: 100dvh }
     }
 
     .card {
       width: 100%;
       max-width: 360px;
+      transform-origin: top center;
       background: #fff;
       border-radius: 20px;
       box-shadow: 0 4px 24px rgba(15,42,94,.10);
@@ -50,7 +55,7 @@
     /* Header */
     .card-header {
       background: var(--dark);
-      padding: 12px 20px 12px;
+      padding: 8px 16px 8px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -215,7 +220,7 @@
 
     @media(max-height:680px) {
       .card-header { padding: 9px 14px 9px }
-      .card-hero{aspect-ratio:2/1}
+      .card-hero{aspect-ratio:16/9}
       .logo-mark { width: 36px; height: 36px }
       .logo-mark span { font-size: 18px }
       .card-name h1 { font-size: 15px }
@@ -293,7 +298,7 @@
         <span class="tag">Flotas de empresa</span>
         <span class="tag">Recogida y entrega</span>
         <span class="tag">Adelanto de tasas</span>
-        <span class="tag">Factura consolidada</span>
+        
       </div>
     </div>
 
