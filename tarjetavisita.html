@@ -145,8 +145,8 @@
 
     /* Botones */
     .actions {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 7px;
       margin-bottom: 12px;
     }
@@ -189,8 +189,8 @@
     }
 
     .services-grid {
-      display: flex;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 5px;
     }
 
@@ -284,7 +284,7 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
         Ver web
       </a>
-      <a class="btn btn-vcf" href="/mari-angeles-pedrosa.vcf" download="Mari Ángeles Pedrosa - Hola ITV Málaga.vcf">
+      <a class="btn btn-vcf" style="grid-column:1/-1" href="/mari-angeles-pedrosa.vcf" download="Mari Ángeles Pedrosa - Hola ITV Málaga.vcf">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         Guardar contacto
       </a>
@@ -297,6 +297,7 @@
         <span class="tag">Rent-a-car</span>
         <span class="tag">Flotas de empresa</span>
         <span class="tag">Recogida y entrega</span>
+        <span class="tag">Gestión de cita</span>
         <span class="tag">Adelanto de tasas</span>
         
       </div>
