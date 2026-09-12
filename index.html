@@ -27,7 +27,10 @@ body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--whi
 .nav-link{font-size:.85rem;font-weight:600;color:var(--blue-dark);text-decoration:none;padding:.55rem 1.25rem;border:1.5px solid var(--blue-dark);border-radius:8px;transition:all .2s}
 .nav-link:hover{background:var(--blue-dark);color:var(--white)}
 
-.hero{padding:5rem 0 4rem;text-align:center;background:var(--white)}
+.hero{padding:0;text-align:center;background:var(--white)}
+.hero-img{width:100%;aspect-ratio:1855/848;overflow:hidden;background:#dbe7f5}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+.hero-content{padding:3.5rem 0 4rem}
 .hero-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-dark);background:rgba(42,159,214,.07);border:1px solid rgba(42,159,214,.15);padding:.35rem 1rem;border-radius:6px;margin-bottom:1.5rem}
 .hero h1{font-family:'Source Serif 4',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:800;line-height:1.15;color:var(--navy);max-width:700px;margin:0 auto 1.25rem}
 .hero h1 em{font-style:normal;color:var(--blue)}
@@ -88,7 +91,9 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
   .diff-grid{grid-template-columns:1fr;gap:1.5rem}
   .steps{grid-template-columns:1fr}
   .clients-grid{grid-template-columns:1fr}
-  .hero{padding:3.5rem 0 3rem}
+  .hero-content{padding:2.5rem 0 2.5rem}
+  .hero-img{aspect-ratio:4/3}
+  .hero-img img{object-position:35% center}
   .hero-actions{flex-direction:column;align-items:center}
   .btn{width:100%;max-width:300px;justify-content:center}
   .footer-links{flex-direction:column;gap:.5rem}
@@ -117,7 +122,8 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
 </nav>
 
 <section class="hero">
-  <div class="container">
+  <div class="hero-img"><img src="/hero-holaitv.jpg" alt="Hola ITV Málaga — Servicios del Automóvil" fetchpriority="high"></div>
+  <div class="container hero-content">
     <div class="hero-tag">Servicio exclusivo para profesionales del automóvil</div>
     <h1>Tu flota con la ITV al día, <em>sin mover un dedo</em></h1>
     <p>Gestionamos las citas, recogemos los vehículos en tus instalaciones, pasamos la inspección y los devolvemos. Adelantamos las tasas y te lo facturamos todo junto.</p>
@@ -264,5 +270,6 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
   });
 })();
 </script>
+<script src="/holaitv-bot.js" defer></script>
 </body>
 </html>
