@@ -28,7 +28,7 @@ body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--whi
 .nav-link:hover{background:var(--blue-dark);color:var(--white)}
 
 .hero{padding:0;text-align:center;background:var(--white)}
-.hero-img{width:100%;aspect-ratio:1855/848;overflow:hidden;background:#dbe7f5}
+.hero-img{width:100%;height:min(52vh,440px);overflow:hidden;background:#dbe7f5}
 .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 .hero-content{padding:3.5rem 0 4rem}
 .hero-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-dark);background:rgba(42,159,214,.07);border:1px solid rgba(42,159,214,.15);padding:.35rem 1rem;border-radius:6px;margin-bottom:1.5rem}
@@ -92,7 +92,7 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
   .steps{grid-template-columns:1fr}
   .clients-grid{grid-template-columns:1fr}
   .hero-content{padding:2.5rem 0 2.5rem}
-  .hero-img{aspect-ratio:4/3}
+  .hero-img{height:240px}
   .hero-img img{object-position:35% center}
   .hero-actions{flex-direction:column;align-items:center}
   .btn{width:100%;max-width:300px;justify-content:center}
@@ -110,16 +110,6 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
 <style>.limonada-link{color:inherit;text-decoration:none;font-weight:700}.limonada-link:hover{text-decoration:underline;text-underline-offset:3px}</style>
 </head>
 <body>
-
-<nav class="nav">
-  <div class="container">
-    <a href="/" class="logo-block">
-      <div class="logo-icon">H</div>
-      <div class="logo-text">HOLA ITV MÁLAGA<span>Servicios del Automóvil</span></div>
-    </a>
-    <a href="mailto:mapedrosa@holaitvmalaga.com?subject=Solicitud%20de%20servicio%20ITV" class="nav-link">Contactar</a>
-  </div>
-</nav>
 
 <section class="hero">
   <div class="hero-img"><img src="/hero-holaitv.jpg" alt="Hola ITV Málaga — Servicios del Automóvil" fetchpriority="high"></div>
