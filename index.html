@@ -28,8 +28,9 @@ body{font-family:'DM Sans',sans-serif;color:var(--gray-800);background:var(--whi
 .nav-link:hover{background:var(--blue-dark);color:var(--white)}
 
 .hero{padding:0;text-align:center;background:var(--white)}
-.hero-img{width:100%;aspect-ratio:1855/848;overflow:hidden;background:#dbe7f5}
-.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+.hero-img{position:relative;width:100%;height:min(48vh,420px);overflow:hidden;background:#0f2a5e url(/hero-holaitv.jpg) center/cover no-repeat}
+.hero-img::before{content:"";position:absolute;inset:-20px;background:inherit;filter:blur(18px) brightness(.85);z-index:0}
+.hero-img img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;object-position:center;display:block;filter:drop-shadow(0 6px 24px rgba(0,0,0,.25))}
 .hero-content{padding:3.5rem 0 4rem}
 .hero-tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-dark);background:rgba(42,159,214,.07);border:1px solid rgba(42,159,214,.15);padding:.35rem 1rem;border-radius:6px;margin-bottom:1.5rem}
 .hero h1{font-family:'Source Serif 4',serif;font-size:clamp(2rem,4.5vw,3rem);font-weight:800;line-height:1.15;color:var(--navy);max-width:700px;margin:0 auto 1.25rem}
@@ -93,7 +94,8 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
   .clients-grid{grid-template-columns:1fr}
   .hero-content{padding:2.5rem 0 2.5rem}
   .hero-img{height:240px}
-  .hero-img img{object-position:35% top}
+  .hero-img::before{display:none}
+  .hero-img img{object-fit:cover;object-position:35% top;filter:none}
   .hero-actions{flex-direction:column;align-items:center}
   .btn{width:100%;max-width:300px;justify-content:center}
   .footer-links{flex-direction:column;gap:.5rem}
