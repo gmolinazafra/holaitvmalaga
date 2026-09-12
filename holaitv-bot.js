@@ -40,16 +40,20 @@
   .hb-head small i{width:7px;height:7px;background:var(--gr);border-radius:50%;display:inline-block}
   .hb-close{background:rgba(255,255,255,.14);border:0;color:#fff;width:32px;height:32px;border-radius:9px;font-size:20px;line-height:1;cursor:pointer;flex-shrink:0}
   .hb-close:hover{background:rgba(255,255,255,.24)}
-  .hb-body{flex:1;overflow-y:auto;padding:14px 12px;background:#f5f8fc;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
-  .hb-msg{max-width:84%;padding:10px 13px;border-radius:16px;font-size:13.5px;line-height:1.5;color:var(--ink);animation:hbIn .25s ease;word-wrap:break-word}
-  .hb-msg.bot{background:#fff;border:1px solid var(--line);border-bottom-left-radius:5px;align-self:flex-start}
-  .hb-msg.user{background:var(--b);color:#fff;border-bottom-right-radius:5px;align-self:flex-end}
+  .hb-body{flex:1;overflow-y:auto;padding:14px 12px;background:#e9eef5;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+  .hb-row{display:flex;align-items:flex-end;gap:8px;max-width:88%;animation:hbIn .25s ease}
+  .hb-row.bot{align-self:flex-start}
+  .hb-row.user{align-self:flex-end;flex-direction:row-reverse}
+  .hb-av{width:30px;height:30px;flex-shrink:0;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,.2))}
+  .hb-msg{padding:9px 13px;border-radius:14px;font-size:13.5px;line-height:1.5;color:var(--ink);word-wrap:break-word;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+  .hb-msg.bot{background:#fff;border-bottom-left-radius:3px}
+  .hb-msg.user{background:#111827;color:#fff;border-bottom-right-radius:3px}
   .hb-msg b{font-weight:700}
   .hb-msg a{color:var(--b2);font-weight:700;text-decoration:none}
   .hb-msg.user a{color:#fff;text-decoration:underline}
   .hb-msg ul{margin:6px 0 0 16px;padding:0}
   .hb-msg li{margin:2px 0}
-  .hb-typing{align-self:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;border-bottom-left-radius:5px;padding:12px 16px;display:flex;gap:5px}
+  .hb-typing{background:#fff;border-radius:14px;border-bottom-left-radius:3px;padding:12px 16px;display:flex;gap:5px;box-shadow:0 1px 1px rgba(0,0,0,.06)}
   .hb-typing i{width:7px;height:7px;background:#b8c3d6;border-radius:50%;animation:hbDot 1.2s infinite}
   .hb-typing i:nth-child(2){animation-delay:.2s}.hb-typing i:nth-child(3){animation-delay:.4s}
   @keyframes hbDot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
@@ -77,7 +81,11 @@
 
   /* ---------- Base de conocimiento ---------- */
   const R = {
-    hola: () => `¡Hola! Soy <b>HolaBot</b>, el asistente de Hola ITV Málaga 🤖<br>Gestionamos la ITV de flotas profesionales: cita, recogida, inspección, entrega y factura. <b>¿En qué te ayudo?</b>`,
+    hola: () => {
+      const h = new Date().getHours();
+      const sal = h < 13 ? '¡Buenos días!' : h < 20 ? '¡Buenas tardes!' : '¡Buenas noches!';
+      return `${sal} Soy <b>HolaBot</b>, el asistente virtual de <b>Hola ITV Málaga</b> 🤖<br>Gestionamos la ITV de flotas profesionales: cita, recogida, inspección, entrega y factura. <b>¿En qué te ayudo?</b>`;
+    },
 
     particular: () => `Trabajamos <b>exclusivamente con empresas y profesionales del automóvil</b>: concesionarios, rent-a-car, talleres, flotas… Para un vehículo particular te recomendamos pedir cita directamente en la estación ITV.<br><br>Si tienes una empresa con varios vehículos, ¡cuéntame! 🚐`,
 
@@ -197,8 +205,13 @@
 
     const scroll = () => { body.scrollTop = body.scrollHeight; };
 
-    function addUser(t) { body.appendChild(h('div', 'hb-msg user', t.replace(/</g, '&lt;'))); scroll(); }
-    function addBot(html) { body.appendChild(h('div', 'hb-msg bot', html)); scroll(); }
+    function row(kind, inner) {
+      const r = h('div', 'hb-row ' + kind);
+      if (kind === 'bot') { const av = h('img', 'hb-av'); av.src = CFG.avatar; av.alt = ''; r.appendChild(av); }
+      r.appendChild(inner); body.appendChild(r); scroll(); return r;
+    }
+    function addUser(t) { row('user', h('div', 'hb-msg user', t.replace(/</g, '&lt;'))); }
+    function addBot(html) { row('bot', h('div', 'hb-msg bot', html)); }
     function addChips(list) {
       const c = h('div', 'hb-chips');
       list.forEach(l => { const b = h('button', 'hb-chip', l); b.type = 'button'; b.onclick = () => { c.remove(); send(l); }; c.appendChild(b); });
@@ -206,20 +219,22 @@
     }
     function typing(ms) {
       return new Promise(res => {
-        const t = h('div', 'hb-typing', '<i></i><i></i><i></i>'); body.appendChild(t); scroll();
-        setTimeout(() => { t.remove(); res(); }, ms);
+        const r = row('bot', h('div', 'hb-typing', '<i></i><i></i><i></i>'));
+        setTimeout(() => { r.remove(); res(); }, ms);
       });
     }
-    const delay = () => CFG.typingMin + Math.random() * (CFG.typingMax - CFG.typingMin);
+    // tiempo proporcional a la longitud del texto (≈ 18 ms por carácter, entre 600 y 2600 ms)
+    const delayFor = html => Math.min(2600, Math.max(600, html.replace(/<[^>]+>/g, '').length * 18));
 
     async function reply(text) {
       root.querySelectorAll('.hb-chips').forEach(e => e.remove());
       const it = match(text);
-      await typing(delay());
-      if (!it) { addBot(R.fallback()); addChips(['Cómo funciona', 'Contacto']); return; }
-      let html = it.r ? R[it.r]() : PROCESO();
-      if (it.cta) html += CTA();
+      let html;
+      if (!it) html = R.fallback();
+      else { html = it.r ? R[it.r]() : PROCESO(); if (it.cta) html += CTA(); }
+      await typing(delayFor(html));
       addBot(html);
+      if (!it) { addChips(['Cómo funciona', 'Contacto']); return; }
       if (it.chips) addChips(it.chips);
     }
 
@@ -235,8 +250,9 @@
       root.classList.add('open');
       if (!started) {
         started = true;
-        await typing(700);
-        addBot(R.hola());
+        const hi = R.hola();
+        await typing(delayFor(hi));
+        addBot(hi);
         addChips(['Cómo funciona', 'Pedir cita', 'Precio', 'Soy particular']);
       }
       setTimeout(() => input.focus(), 150);
