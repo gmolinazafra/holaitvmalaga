@@ -108,11 +108,52 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
 .cookie-banner{position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:9999;display:none;align-items:center;justify-content:space-between;gap:1rem;max-width:960px;margin:auto;padding:1rem 1.1rem;border-radius:12px;background:#111827;color:#fff;box-shadow:0 18px 45px rgba(0,0,0,.22);font:14px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.cookie-banner.is-visible{display:flex}.cookie-banner p{margin:0}.cookie-banner a{color:#bfdbfe;text-decoration:underline}.cookie-banner button{border:0;border-radius:999px;background:#fff;color:#111827;font-weight:700;padding:.65rem 1rem;cursor:pointer;white-space:nowrap}@media(max-width:640px){.cookie-banner{flex-direction:column;align-items:flex-start}.cookie-banner button{width:100%}}
 </style>
 <style>.limonada-link{color:inherit;text-decoration:none;font-weight:700}.limonada-link:hover{text-decoration:underline;text-underline-offset:3px}</style>
+<style>
+/* Vídeo del servicio: mini bajo las palmeras; al tocarlo se abre a lo grande */
+.hero-img{position:relative}
+.hero-vid{position:absolute;z-index:3;left:4.5%;bottom:14px;width:clamp(96px,9vw,132px);aspect-ratio:9/16;padding:0;margin:0;border:2px solid rgba(255,255,255,.9);border-radius:18px;overflow:hidden;background:#0f2a5e;cursor:pointer;color:#fff;font:inherit;box-shadow:0 18px 36px -12px rgba(15,42,94,.6);transform:rotate(-2deg);transition:transform .3s cubic-bezier(.2,.8,.2,1);-webkit-tap-highlight-color:transparent}
+.hero-vid:hover,.hero-vid:focus-visible{transform:rotate(0) scale(1.04);outline:none}
+.hero-vid:focus-visible{box-shadow:0 0 0 3px #fff,0 18px 36px -12px rgba(15,42,94,.6)}
+.hero-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.hero-vid::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(15,42,94,.75) 100%)}
+.hero-vid .vplay{position:absolute;z-index:2;left:50%;top:46%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;background:rgba(255,255,255,.95);color:#1b6fe0;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.3)}
+.hero-vid .vplay::before{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid rgba(255,255,255,.8);animation:vpulse 2.4s ease-out infinite}
+.hero-vid .vplay svg{width:18px;height:18px;margin-left:3px;fill:currentColor}
+.hero-vid .vtxt{position:absolute;z-index:2;left:4px;right:4px;bottom:9px;font-size:11px;font-weight:700;line-height:1.2;text-align:center;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+@keyframes vpulse{0%{transform:scale(.85);opacity:.9}100%{transform:scale(1.55);opacity:0}}
+.vbox{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(10,20,40,.92);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.vbox[hidden]{display:none}
+.vbox video{display:block;height:min(92vh,92svh);max-width:100%;aspect-ratio:9/16;background:#000;border-radius:18px;box-shadow:0 40px 80px -20px rgba(0,0,0,.8)}
+.vbox-x{position:absolute;z-index:2;top:14px;right:14px;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:30px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0}
+.vbox-x:hover{background:rgba(255,255,255,.3)}
+html.vbox-abierta,html.vbox-abierta body{overflow:hidden}
+@media(max-width:700px){
+  .hero-vid{left:10px;bottom:8px;width:62px;border-width:1.5px;border-radius:11px;transform:rotate(-2deg)}
+  .hero-vid .vplay{width:28px;height:28px;margin:-14px 0 0 -14px}
+  .hero-vid .vplay::before{inset:-4px}
+  .hero-vid .vplay svg{width:12px;height:12px;margin-left:2px}
+  .hero-vid .vtxt{display:none}
+  .vbox{padding:0;background:#000;-webkit-backdrop-filter:none;backdrop-filter:none}
+  .vbox video{width:100%;height:auto;max-height:100vh;max-height:100svh;border-radius:0;box-shadow:none}
+  .vbox-x{top:calc(10px + env(safe-area-inset-top,0px));right:12px;background:rgba(255,255,255,.22)}
+}
+@media(prefers-reduced-motion:reduce){.hero-vid,.hero-vid .vplay::before{animation:none;transition:none}}
+</style>
 </head>
 <body>
 
 <section class="hero">
-  <div class="hero-img"><img src="/hero-holaitv.jpg" alt="Hola ITV Málaga — Servicios del Automóvil" fetchpriority="high"></div>
+  <div class="hero-img"><img src="/hero-holaitv.jpg" alt="Hola ITV Málaga — Servicios del Automóvil" fetchpriority="high">
+    <button type="button" class="hero-vid" data-video aria-label="Ver el vídeo: así funciona Hola ITV Málaga (40 segundos)">
+      <video muted loop playsinline autoplay preload="metadata" poster="/video/holaitv-poster.webp" aria-hidden="true" tabindex="-1"><source src="/video/holaitv-mini.mp4" type="video/mp4"></video>
+      <span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+      <span class="vtxt" aria-hidden="true">Así funciona</span>
+    </button>
+  </div>
+  <div class="vbox" id="vbox" hidden role="dialog" aria-modal="true" aria-label="Vídeo: así funciona Hola ITV Málaga">
+    <button type="button" class="vbox-x" aria-label="Cerrar el vídeo">×</button>
+    <video controls playsinline preload="none" poster="/video/holaitv-poster.webp" src="/video/holaitv-spot.mp4"></video>
+  </div>
   <div class="container hero-content">
     <div class="hero-tag">Servicio exclusivo para profesionales del automóvil</div>
     <h1>Tu flota con la ITV al día, <em>sin mover un dedo</em></h1>
@@ -258,6 +299,26 @@ footer{padding:2rem 0;border-top:1px solid var(--gray-100);text-align:center}
     try { localStorage.setItem(key, '1'); } catch (e) {}
     banner.classList.remove('is-visible');
   });
+})();
+</script>
+<script>
+/* Vídeo: la mini abre el vídeo en grande; Esc, la X o tocar fuera lo cierran */
+(function(){
+  var box=document.getElementById("vbox");if(!box)return;
+  var v=box.querySelector("video"),x=box.querySelector(".vbox-x"),mini=document.querySelector(".hero-vid"),mv=mini?mini.querySelector("video"):null,last=null;
+  var quieto=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function play(el){var p=el.play();if(p&&p.catch)p.catch(function(){})}
+  function abrir(e){if(e){e.preventDefault();e.stopPropagation()}last=document.activeElement;box.hidden=false;document.documentElement.classList.add("vbox-abierta");if(mv)mv.pause();x.focus();play(v)}
+  function cerrar(){if(box.hidden)return;box.hidden=true;document.documentElement.classList.remove("vbox-abierta");v.pause();try{v.currentTime=0}catch(err){}if(mv&&!quieto)play(mv);if(last&&last.focus)last.focus()}
+  document.querySelectorAll("[data-video]").forEach(function(el){el.addEventListener("click",abrir)});
+  x.addEventListener("click",cerrar);
+  box.addEventListener("click",function(e){if(e.target===box)cerrar()});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")cerrar()});
+  v.addEventListener("ended",function(){setTimeout(cerrar,600)});
+  if(mv){
+    if(quieto){mv.removeAttribute("autoplay");mv.pause()}
+    else if("IntersectionObserver" in window){new IntersectionObserver(function(es){es.forEach(function(en){if(box.hidden&&en.isIntersecting)play(mv);else mv.pause()})},{threshold:.2}).observe(mv)}
+  }
 })();
 </script>
 <script src="/holaitv-bot.js" defer></script>
