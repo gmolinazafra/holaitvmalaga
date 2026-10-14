@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Mari Ángeles Pedrosa — Hola ITV Málaga. Gestión integral de ITV para profesionales del automóvil.">
   <meta name="robots" content="noindex">
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Hola ITV Málaga">
+  <meta property="og:title" content="Mari Ángeles Pedrosa · Hola ITV Málaga">
+  <meta property="og:description" content="Tu flota con la ITV al día, sin mover un dedo. Gestión integral de ITV para concesionarios, rent-a-car y flotas.">
+  <meta property="og:url" content="https://holaitvmalaga.com/tarjetavisita">
+  <meta property="og:image" content="https://holaitvmalaga.com/tarjeta-og.jpg">
+  <meta property="og:image:alt" content="Tarjeta de visita de Mari Ángeles Pedrosa · Hola ITV Málaga">
+  <meta property="og:locale" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mari Ángeles Pedrosa · Hola ITV Málaga">
+  <meta name="twitter:description" content="Tu flota con la ITV al día, sin mover un dedo.">
+  <meta name="twitter:image" content="https://holaitvmalaga.com/tarjeta-og.jpg">
   <title>Mari Ángeles Pedrosa · Hola ITV Málaga</title>
   <link rel="icon" href="/favicon-32.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -176,6 +188,12 @@
     .btn-web   { background: var(--light); color: var(--dark); border: 1.5px solid #c7d5f5 }
     .btn-vcf   { background: var(--blue); color: #fff }
 
+    .btn-share { background: #fff; color: var(--dark); border: 1.5px solid var(--line) }
+    .share-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;font-size:13px;font-weight:600;padding:10px 16px;border-radius:10px;opacity:0;pointer-events:none;transition:.25s;z-index:10}
+    .share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+    .powered{margin-top:4px;font-size:10px;color:#94a3b8}
+    .powered a{color:#94a3b8;text-decoration:none;font-weight:700}
+
     /* Servicios */
     .services { margin-bottom: 0 }
 
@@ -288,6 +306,10 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         Guardar contacto
       </a>
+      <button type="button" class="btn btn-share" style="grid-column:1/-1" id="share-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Compartir tarjeta
+      </button>
     </div>
 
     <div class="services">
@@ -307,9 +329,36 @@
 
   <div class="card-footer">
     <p><strong>Hola ITV Málaga</strong> · Tu flota con la ITV al día, sin mover un dedo</p>
+    <p class="powered">Powered by <a href="https://www.limonadaweb.com" target="_blank" rel="noopener">Limonada Web</a></p>
   </div>
 
 </div>
+
+<div class="share-toast" id="share-toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  var URL_TARJETA = 'https://holaitvmalaga.com/tarjetavisita';
+  var TITULO = 'Mari Ángeles Pedrosa · Hola ITV Málaga';
+  var TEXTO = 'Te paso la tarjeta de Mari Ángeles Pedrosa, de Hola ITV Málaga:';
+  var btn = document.getElementById('share-btn');
+  var toast = document.getElementById('share-toast');
+  function aviso(t){ toast.textContent = t; toast.classList.add('show'); setTimeout(function(){ toast.classList.remove('show'); }, 2200); }
+  function porWhatsApp(){ window.location.href = 'https://wa.me/?text=' + encodeURIComponent(TEXTO + ' ' + URL_TARJETA); }
+  btn.addEventListener('click', function(){
+    if (navigator.share) {
+      navigator.share({ title: TITULO, text: TEXTO, url: URL_TARJETA }).catch(function(e){
+        if (e && e.name !== 'AbortError') porWhatsApp();
+      });
+      return;
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(URL_TARJETA).then(function(){ aviso('Enlace copiado'); }, porWhatsApp);
+      return;
+    }
+    porWhatsApp();
+  });
+})();
+</script>
 
 </body>
 </html>
