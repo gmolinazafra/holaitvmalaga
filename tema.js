@@ -79,14 +79,19 @@
 
 })();
 
-/* La píldora nunca va encima de la foto de portada: se coloca justo debajo; si no cabe, espera escondida hasta que haya sitio */
+/* Píldora sobre el borde de la foto de portada: «Claro» encima de la foto y «Oscuro» sobre el fondo.
+   Al bajar acompaña al borde de la foto y se queda bajo la cabecera cuando la foto ya no se ve */
 (function(){
-  var img=document.querySelector('.hero-img'),rail=document.querySelector('.side-rail');if(!img||!rail)return;
-  rail.style.transition='opacity .25s';
+  var img=document.querySelector('.hero-img'),rail=document.querySelector('.side-rail'),nav=document.querySelector('.nav');if(!img||!rail)return;
+  var sw=rail.querySelector('.theme-switch'),dk=sw&&sw.querySelector('[data-set-theme="dark"]');if(!dk)return;
   function fit(){
-    rail.style.top='';rail.style.bottom='';rail.style.transform='';rail.style.opacity='';rail.style.visibility='';
-    var r=rail.getBoundingClientRect(),sw=rail.querySelector('.theme-switch').getBoundingClientRect(),tt=rail.querySelector('.to-top'),h=tt&&tt.classList.contains('show')?r.height:sw.height,b=img.getBoundingClientRect().bottom;
-    if(b>sw.top-8){var y=b+16;if(y+h<innerHeight-8){rail.style.top=y+'px';rail.style.bottom='auto';rail.style.transform='none'}else{rail.style.opacity='0';rail.style.visibility='hidden'}}
+    if(!rail.offsetHeight)return;
+    var gap=dk.getBoundingClientRect().top-rail.getBoundingClientRect().top-2,b=img.getBoundingClientRect().bottom,
+        min=(nav?Math.max(0,nav.getBoundingClientRect().bottom):0)+12,y=Math.max(b-gap,min),
+        tt=rail.querySelector('.to-top'),h=tt&&tt.classList.contains('show')?rail.offsetHeight:sw.offsetHeight;
+    rail.style.transform='none';rail.style.bottom='auto';rail.style.top=y+'px';
+    var hide=y+h>innerHeight-8;rail.style.opacity=hide?'0':'';rail.style.visibility=hide?'hidden':'';
   }
-  addEventListener('scroll',fit,{passive:true});addEventListener('resize',fit);addEventListener('load',fit);fit();
+  rail.style.transition='opacity .25s';
+  addEventListener('scroll',fit,{passive:true});addEventListener('resize',fit);addEventListener('load',fit);document.addEventListener('click',function(){setTimeout(fit,60)});fit();setTimeout(fit,300);
 })();

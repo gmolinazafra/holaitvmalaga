@@ -50,3 +50,4 @@ html[data-theme="dark"] #hb-fab{filter:drop-shadow(0 0 1px rgba(255,255,255,.9))
 @media(max-width:760px){.theme-switch{padding:2px;gap:2px}.theme-switch button{min-width:20px;padding:8px 2px;gap:4px;font-size:9.5px}.theme-switch button svg{width:11px;height:11px}}
 /* La píldora entera sobre la parte lisa, nunca a caballo entre la foto y el fondo */
 @media(min-width:761px){.side-rail{top:auto;bottom:110px;transform:none}}
+@media(max-width:760px){.hero-vid{left:34px}}
