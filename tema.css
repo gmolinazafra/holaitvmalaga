@@ -1,0 +1,45 @@
+/* Hola ITV Málaga · tema claro/oscuro y volver arriba (barra lateral de Limonada Web) */
+html[data-theme="dark"]{color-scheme:dark;--white:#0d1a21;--gray-50:#132530;--gray-100:#21343f;--gray-200:#2e4552;--gray-400:#8ea3ae;--gray-600:#b3c3cb;--gray-800:#dbe5ea;--navy:#eef5f9;--blue-dark:#5cc0ee;--blue-deeper:#2a9fd6}
+html[data-theme="dark"] body{background:var(--white)}
+html[data-theme="dark"] .logo-icon,html[data-theme="dark"] .btn-email,html[data-theme="dark"] .nav-link:hover{color:#fff}
+html[data-theme="dark"] .nav-link:hover{background:var(--blue-deeper);border-color:var(--blue-deeper)}
+html[data-theme="dark"] .btn-primary{background:#eef5f9;color:#0c2d3f}
+html[data-theme="dark"] .btn-primary:hover{background:#cfe6f2;color:#0c2d3f}
+html[data-theme="dark"] .hero-tag{background:rgba(42,159,214,.14);border-color:rgba(92,192,238,.3)}
+html[data-theme="dark"] .hero-img{background:#132530}
+html[data-theme="dark"] .hero-img img{filter:brightness(.88)}
+html[data-theme="dark"] .legal a,html[data-theme="dark"] .footer-links a:hover{color:var(--blue-dark)}
+.side-rail{position:fixed;left:14px;top:50%;transform:translateY(-58%);z-index:40;display:flex;flex-direction:column;align-items:center;gap:16px;pointer-events:none}
+.side-rail>*{pointer-events:auto}
+.theme-switch{display:flex;flex-direction:column;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.78);border:1px solid rgba(16,24,40,.12);box-shadow:0 8px 24px rgba(16,24,40,.12);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:background .3s,border-color .3s,box-shadow .3s}
+.theme-switch button{writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;gap:7px;min-width:34px;padding:12px 7px;border:0;border-radius:999px;background:transparent;color:#475467;font:600 12.5px/1 'DM Sans',sans-serif;letter-spacing:.02em;cursor:pointer;transition:background .3s,color .3s}
+.theme-switch button svg{width:15px;height:15px;transform:rotate(90deg);flex:0 0 auto}
+.theme-switch button:hover{color:#101828}
+.theme-switch button[aria-pressed="true"],.theme-switch button[aria-pressed="true"]:hover{background:#101828;color:#fff}
+.to-top{writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;gap:12px;padding:6px 4px;border:0;background:none;color:#344054;font:600 12.5px/1 'DM Sans',sans-serif;letter-spacing:.06em;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s,color .3s,background .3s}
+.to-top.show{opacity:1;visibility:visible}
+.to-top i{display:block;width:1.5px;height:36px;background:currentColor;opacity:.6;transition:height .2s}
+.to-top:hover{color:#101828}
+.to-top:hover i{height:48px}
+.theme-switch button:focus-visible,.to-top:focus-visible{outline:3px solid #f4c430;outline-offset:2px}
+/* Sobre fondo oscuro (foto, vídeo, secciones oscuras o tema oscuro) */
+.theme-switch.on-dark{background:rgba(10,14,20,.35);border-color:rgba(255,255,255,.28);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.theme-switch.on-dark button{color:rgba(255,255,255,.78)}
+.theme-switch.on-dark button:hover{color:#fff}
+.theme-switch.on-dark button[aria-pressed="true"],.theme-switch.on-dark button[aria-pressed="true"]:hover{background:rgba(255,255,255,.92);color:#101828}
+.to-top.on-dark{color:rgba(255,255,255,.85)}
+.to-top.on-dark:hover{color:#fff}
+@media(max-width:760px){
+  .side-rail{left:2px;right:auto;top:auto;bottom:96px;transform:none;flex-direction:column;gap:12px}
+  .theme-switch{padding:2px;gap:2px}
+  .theme-switch button{min-width:24px;padding:9px 4px;gap:5px;font-size:10.5px}
+  .theme-switch button svg{width:12px;height:12px}
+  .to-top{gap:8px;padding:2px;font-size:10.5px}
+  .to-top i,.to-top:hover i{height:26px}
+  .container{padding-left:2.1rem}
+  .cookie-banner.is-visible ~ .side-rail{display:none}
+}
+@media(min-width:761px) and (max-width:1120px){.container{padding-left:max(2rem,calc(78px - (100vw - 960px) / 2))}}
+@media print{.side-rail{display:none}}
+.to-top{min-width:24px;min-height:24px}
+html[data-theme="dark"] #hb-fab{filter:drop-shadow(0 0 1px rgba(255,255,255,.9)) drop-shadow(0 0 10px rgba(160,215,245,.55))}
