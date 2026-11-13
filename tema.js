@@ -78,3 +78,14 @@
   });
 
 })();
+
+/* La píldora nunca queda a caballo entre la foto de portada y el fondo: si la pisa, baja justo debajo */
+(function(){
+  var img=document.querySelector('.hero-img'),rail=document.querySelector('.side-rail');if(!img||!rail)return;
+  function fit(){
+    rail.style.top='';rail.style.bottom='';rail.style.transform='';
+    var r=rail.getBoundingClientRect(),sw=rail.querySelector('.theme-switch').getBoundingClientRect(),tt=rail.querySelector('.to-top'),h=tt&&tt.classList.contains('show')?r.height:sw.height,b=img.getBoundingClientRect().bottom;
+    if(b>sw.top-8&&b<sw.bottom+8){var y=b+16;if(y+h<innerHeight-8){rail.style.top=y+'px';rail.style.bottom='auto';rail.style.transform='none'}}
+  }
+  addEventListener('scroll',fit,{passive:true});addEventListener('resize',fit);addEventListener('load',fit);fit();
+})();
