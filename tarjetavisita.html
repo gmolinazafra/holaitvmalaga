@@ -33,7 +33,7 @@
 <meta name="twitter:description" content="Tu flota con la ITV al día, sin mover un dedo.">
 <meta name="twitter:image" content="https://holaitvmalaga.com/tarjeta-og.jpg">
 <link rel="icon" href="/favicon-32.png">
-<link rel="preload" as="image" href="/tarjeta-hero.webp?v=1">
+<link rel="preload" as="image" href="/tarjeta-hero.webp?v=2">
 <style>
 /* Tarjeta digital NFC · Mari Ángeles Pedrosa · Hola ITV Málaga · Powered by Limonada Web */
 :root{
@@ -762,6 +762,10 @@ html[lang="ar"] body{font-family:"Segoe UI",Tahoma,"Noto Sans Arabic","Geeza Pro
 
 /* ---- Hola ITV Málaga ---- */
 .hero{background:#0b1e46}
+.hero > .idiomas{right:auto!important;left:11px}
+@media (min-width:470px){.hero > .idiomas{left:18px}}
+.idiomas.peq{gap:3px;padding:3px}
+.idiomas.peq button{width:22px;height:15px}
 .hero .foto{max-height:none!important;aspect-ratio:auto!important;height:auto}
 .hero::after{height:42%}
 .hero .apellidos{color:#8fb4ff}
@@ -796,7 +800,7 @@ html[lang="ar"] body{font-family:"Segoe UI",Tahoma,"Noto Sans Arabic","Geeza Pro
 <main class="tarjeta">
 
   <header class="hero">
-    <img class="foto" src="/tarjeta-hero.webp?v=1" width="900" height="720" alt="Hola ITV Málaga · Servicios del Automóvil" fetchpriority="high">
+    <img class="foto" src="/tarjeta-hero.webp?v=2" width="900" height="770" alt="Hola ITV Málaga · Servicios del Automóvil" fetchpriority="high">
     <div class="idiomas" role="group" aria-label="Seleccionar idioma">
         <button class="activo" lang="es" onclick="setLang('es')" aria-label="Español" title="Español">
           <svg viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#c60b1e"/><rect y=".5" width="3" height="1" fill="#ffc400"/></svg>
@@ -983,6 +987,15 @@ const TRANS = {
   it:{"lema": "L’ITV della tua flotta sempre in regola, senza muovere un dito", "llamar": "Chiama", "escribir": "Scrivici", "web": "Sito web", "guardar": "Salva contatto", "compartir": "Condividi", "botTit": "Chiedi a HolaBot", "botSub": "Risposte immediate sull’ITV della tua flotta", "srvLabel": "Servizio esclusivo per professionisti", "t0": "Concessionari", "t1": "Noleggio auto", "t2": "Flotte aziendali", "t3": "Ritiro e consegna", "t4": "Gestione appuntamenti", "t5": "Tasse: anticipate o tuo conto", "copiado": "Link copiato", "noCopia": "Impossibile copiare", "shareTxt": "Ti invio la scheda di Mari Ángeles Pedrosa, Hola ITV Málaga:", "compartirV": "Condividi", "vsTxt": "Guarda questo video di Hola ITV Málaga", "cargo": "Gestione completa ITV", "empresa": "Servizi per l’auto", "c1": "Concessionari", "c2": "Noleggio", "c3": "Flotte", "guardTit": "Salva contatto", "guardSub": "Salva in rubrica", "webTit": "Sito web", "contacto": "Contatto diretto", "videos": "Video", "v0T": "La tua ITV, senza andare all’ITV", "v0S": "Come funziona, in 30 secondi", "v1T": "I nostri servizi", "v1S": "Hola ITV Málaga in 40 secondi", "v2T": "Buon Natale!", "v2S": "I nostri auguri 2026", "compartirTxt": "Condividi questo biglietto", "lema2": "SERVIZI PER L’AUTO", "nfc": "Biglietto digitale NFC", "pie": "Powered by", "pieSub": "Spremiamo Internet per la tua attività", "pista": "Scorri per vedere di più", "s0": "Immatricolazioni e stock in regola", "s1": "La tua flotta sempre disponibile", "s2": "Controllo delle scadenze", "s3": "Ritiriamo il veicolo", "s4": "Prenotiamo noi l’appuntamento", "s5": "Come preferisci"},
   de:{"lema": "Die ITV Ihrer Flotte immer aktuell – ganz ohne Aufwand", "llamar": "Anrufen", "escribir": "Schreiben Sie uns", "web": "Webseite", "guardar": "Kontakt speichern", "compartir": "Teilen", "botTit": "HolaBot fragen", "botSub": "Sofort Antworten zur ITV Ihrer Flotte", "srvLabel": "Exklusiver Service für Gewerbekunden", "t0": "Autohäuser", "t1": "Autovermietung", "t2": "Firmenflotten", "t3": "Abholung & Rückgabe", "t4": "Terminvereinbarung", "t5": "Gebühren: vorgestreckt oder Ihr Konto", "copiado": "Link kopiert", "noCopia": "Kopieren nicht möglich", "shareTxt": "Hier die Karte von Mari Ángeles Pedrosa, Hola ITV Málaga:", "compartirV": "Teilen", "vsTxt": "Sehen Sie sich dieses Video von Hola ITV Málaga an", "cargo": "Komplette ITV-Abwicklung", "empresa": "Kfz-Service", "c1": "Autohäuser", "c2": "Autovermietung", "c3": "Flotten", "guardTit": "Kontakt speichern", "guardSub": "Zu Kontakten", "webTit": "Webseite", "contacto": "Direkter Kontakt", "videos": "Videos", "v0T": "Ihre ITV – ohne zur ITV zu fahren", "v0S": "So funktioniert es, in 30 Sekunden", "v1T": "Unsere Leistungen", "v1S": "Hola ITV Málaga in 40 Sekunden", "v2T": "Frohe Weihnachten!", "v2S": "Unser Gruß 2026", "compartirTxt": "Karte teilen", "lema2": "KFZ-SERVICE", "nfc": "Digitale NFC-Karte", "pie": "Powered by", "pieSub": "Wir holen alles aus dem Internet für Ihr Geschäft", "pista": "Wischen für mehr", "s0": "Zulassungen und Bestand aktuell", "s1": "Ihre Flotte immer einsatzbereit", "s2": "Fristen im Blick", "s3": "Wir holen das Fahrzeug ab", "s4": "Wir buchen den Termin für Sie", "s5": "Wie es Ihnen am besten passt"}
 };
+/* Banderas: una columna si no pisan el nombre; si no, dos. */
+(function(){
+  var idi=document.querySelector('.hero > .idiomas'), nom=document.querySelector('.hero .nombre');
+  if(!idi||!nom) return;
+  function pisa(){ return idi.getBoundingClientRect().bottom>nom.getBoundingClientRect().top-6; }
+  function ajustar(){ idi.classList.remove('dos','peq'); if(pisa()) idi.classList.add('peq'); if(pisa()){ idi.classList.remove('peq'); idi.classList.add('dos'); } }
+  var img=document.querySelector('.hero .foto'); if(img && !img.complete) img.addEventListener('load',ajustar);
+  ajustar(); window.addEventListener('resize',ajustar,{passive:true});
+})();
 function tt(k){ var t=TRANS[document.documentElement.lang]||TRANS.es; return t[k]||TRANS.es[k]||''; }
 function setLang(lang){
   var t = TRANS[lang];
